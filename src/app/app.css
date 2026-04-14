@@ -1,0 +1,35 @@
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 20px;
+    font-size: 1.1em;
+    transition: 0.3s;
+    opacity: 0.7;
+}
+
+nav a:hover {
+    opacity: 1;
+    color: #573b8a;
+    text-shadow: 0 0 10px #573b8a;
+}
+
+/* El estilo que se va a aplicar SOLO al botón de la página actual */
+.active-link {
+    opacity: 1;
+    color: #fff;
+    border-bottom: 2px solid #573b8a;
+    padding-bottom: 5px;
+}
