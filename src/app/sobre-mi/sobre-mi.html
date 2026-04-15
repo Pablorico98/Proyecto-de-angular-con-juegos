@@ -1,6 +1,16 @@
 <div class="main">
-    <h1>Sobre Mí</h1>
-    <h2>Pablo</h2>
-    <p>Estudiante en la Universidad Tecnológica Nacional (UTN).</p>
-    <p>Desarrollador en formación y creador de este proyecto aplicando Lazy Loading y ruteo en Angular.</p>
+    <h1>Mi Perfil</h1>
+
+    @if (perfil()) {
+        
+        <img [src]="perfil().avatar_url" alt="Foto de perfil" class="perfil-avatar">
+        
+        <h2>{{ perfil().name || perfil().login }}</h2>
+        <p>{{ perfil().bio || 'Sin biografía en GitHub' }}</p>
+        
+        <a [href]="perfil().html_url" target="_blank" class="perfil-btn">Ir a mi GitHub</a>
+
+    } @else {
+        <p>Viajando a los servidores de GitHub para buscar los datos...</p>
+    }
 </div>

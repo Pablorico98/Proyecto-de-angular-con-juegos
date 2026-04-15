@@ -2,4 +2,19 @@
     <h1>¡Bienvenido a Tareas!</h1>
     <p>Este es el panel principal de tu gestor personal.</p>
     <p>Navegá desde el menú superior para iniciar sesión o registrarte.</p>
+
+    <div class="grilla-tarjetas">
+        
+        @for (item of misTarjetas; track item.titulo) {
+            
+            <app-card 
+                [titulo]="item.titulo" 
+                [subtitulo]="item.subtitulo" 
+                [imagen]="item.imagen" 
+                [link]="item.link">
+            </app-card>
+            
+        }
+
+    </div>
 </div>
