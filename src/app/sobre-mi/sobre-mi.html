@@ -1,16 +1,48 @@
-<div class="main">
-    <h1>Mi Perfil</h1>
+<div class="main-container">
+    <h1 class="titulo-principal">Presentación Académica</h1>
 
-    @if (perfil()) {
-        
-        <img [src]="perfil().avatar_url" alt="Foto de perfil" class="perfil-avatar">
-        
-        <h2>{{ perfil().name || perfil().login }}</h2>
-        <p>{{ perfil().bio || 'Sin biografía en GitHub' }}</p>
-        
-        <a [href]="perfil().html_url" target="_blank" class="perfil-btn">Ir a mi GitHub</a>
+    <div class="cards-wrapper">
+        <section class="card-extra-grande perfil-card">
+            @if (perfil()) {
+                <div class="perfil-header">
+                    <img [src]="perfil().avatar_url" alt="Foto de perfil" class="avatar-xl">
+                    <div class="perfil-info-basica">
+                        <h2>{{ perfil().name || 'Pablo Ignacio Rico' }}</h2>
+                        <span class="badge-tech">UTN - Tecnicatura en Programación</span>
+                    </div>
+                </div>
+                <div class="perfil-body">
+                    <p class="bio-text">{{ perfil().bio || 'Estudiante avanzado enfocado en desarrollo Backend y Análisis de Datos.' }}</p>
+                    <div class="perfil-actions">
+                        <a [href]="perfil().html_url" target="_blank" class="btn-github-premium">
+                            Explorar Repositorios en GitHub
+                        </a>
+                    </div>
+                </div>
+            } @else {
+                <div class="spinner-container">Buscando datos del alumno...</div>
+            }
+        </section>
 
-    } @else {
-        <p>Viajando a los servidores de GitHub para buscar los datos...</p>
-    }
+        <section class="card-extra-grande juego-card">
+            <div class="juego-header">
+                <h2>E-Card: Duelo Logístico</h2>
+                <span class="badge-juego">Propuesta de Juego Propio</span>
+            </div>
+            <div class="juego-body">
+                <p class="intro-juego">Inspirado en Kaiji, este duelo de cartas enfrenta al usuario contra una IA en una batalla de rangos y estrategias. El objetivo es superar a la IA utilizando cartas de Emperador, Ciudadano y Esclavo, cada una con su propia jerarquía de poder.</p>
+                <div class="reglas-estrictas">
+                    <h4>Jerarquía de Cartas:</h4>
+                    <div class="regla-item"><strong>Emperador</strong> vence a <strong>Ciudadano</strong></div>
+                    <div class="regla-item"><strong>Ciudadano</strong> vence a <strong>Esclavo</strong></div>
+                    <div class="regla-item"><strong>Esclavo</strong> vence a <strong>Emperador</strong></div>
+                    <div class="regla-item"><strong>Ciudadano</strong> contra <strong>Ciudadano</strong> es un <strong>Empate</strong></div>
+                </div>
+                
+                <p class="nota-tecnica">
+                    El sistema otorga una bonificación de puntaje sustancial si se logra la victoria utilizando el bando del Esclavo.
+                </p>
+            </div>
+        </section>
+    </div>
 </div>
