@@ -1,5 +1,5 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
-import { GithubService } from '../services/github'; 
+import { GithubService } from '../../services/github'; 
 @Component({
   selector: 'app-sobre-mi',
   standalone: true,
