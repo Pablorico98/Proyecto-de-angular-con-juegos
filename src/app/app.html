@@ -1,10 +1,22 @@
 <nav>
-  <a routerLink="/">Bienvenida</a> |
-  <a routerLink="/login">Login</a> |
-  <a routerLink="/registro">Registro</a> |
-  <a routerLink="/sobre-mi">Sobre Mí</a>
-</nav>
+  <div class="nav-links">
+    <a routerLink="/">Inicio</a>
+    <a routerLink="/sobre-mi">Sobre Mí</a>
+  </div>
 
-<hr>
+  <div class="user-section">
+    @if (!authService.usuarioActual()) {
+      <a routerLink="/login" class="nav-link">Ingresar</a>
+      <a routerLink="/registro" class="btn-auth">Registrarse</a>
+    } @else {
+      <span class="user-name">
+        Hola, <strong>{{ authService.usuarioActual()?.user_metadata?.['nombre'] }}</strong>
+      </span>
+      <button (click)="authService.cerrarSesion()" class="btn-salir">
+        Cerrar Sesión
+      </button>
+    }
+  </div>
+</nav>
 
 <router-outlet></router-outlet>

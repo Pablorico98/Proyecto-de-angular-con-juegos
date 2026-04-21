@@ -1,35 +1,70 @@
+/* Contenedor principal del Navbar */
 nav {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Grupo de links (Izquierda) */
+.nav-links {
+  display: flex;
+  gap: 20px;
 }
 
 nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 0 20px;
-    font-size: 1.1em;
-    transition: 0.3s;
-    opacity: 0.7;
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
 nav a:hover {
-    opacity: 1;
-    color: #573b8a;
-    text-shadow: 0 0 10px #573b8a;
+  color: #007bff;
 }
 
-/* El estilo que se va a aplicar SOLO al botón de la página actual */
-.active-link {
-    opacity: 1;
-    color: #fff;
-    border-bottom: 2px solid #573b8a;
-    padding-bottom: 5px;
+/* Grupo de Usuario (Derecha) */
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-name {
+  color: #eee;
+  font-size: 0.95rem;
+}
+
+.user-name strong {
+  color: #007bff; /* Color azul para resaltar tu nombre */
+}
+
+/* Botón de Cerrar Sesión */
+.btn-salir {
+  background-color: transparent;
+  color: #ff4d4d; /* Rojo suave para indicar salida */
+  border: 1px solid #ff4d4d;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+
+.btn-salir:hover {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+/* Botones de Login/Registro cuando no hay usuario */
+.btn-auth {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
 }

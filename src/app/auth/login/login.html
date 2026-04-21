@@ -1,8 +1,33 @@
-<div class="main">
-    <form>
-        <label>Iniciar Sesión</label>
-        <input type="email" name="email" placeholder="Email" required="">
-        <input type="password" name="pswd" placeholder="Password" required="">
-        <button>Login</button>
+<div class="auth-container">
+  <div class="card-login">
+    <h2>¡Hola de nuevo!</h2>
+    <p>Ingresá tus credenciales para jugar.</p>
+
+    <form [formGroup]="formLogin" (ngSubmit)="entrar()">
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="email" formControlName="email" placeholder="nombre@ejemplo.com">
+      </div>
+
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" formControlName="password" placeholder="••••••••">
+      </div>
+
+      <button type="submit" [disabled]="formLogin.invalid" class="btn-login">
+        Iniciar Sesión
+      </button>
     </form>
+
+    <div class="fast-access">
+      <p>Entrar rápido como:</p>
+      <div class="btn-group">
+        <button type="button" class="btn-fast" (click)="completarCampos('pablo.i.rico98@gmail.com', '123456')">test</button>
+      </div>
+    </div>
+
+    <div class="switch-auth">
+      ¿No tenés cuenta? <a routerLink="/registro">Crear una ahora</a>
+    </div>
+  </div>
 </div>
