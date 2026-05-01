@@ -1,0 +1,14 @@
+<div class="modal-overlay">
+    <div class="modal-card">
+        <h2>{{ titulo }}</h2>
+        <p>{{ mensaje }}</p>
+        <div class="modal-actions">
+            <button class="btn-modal btn-cancelar" (click)="onCancelar()">
+                {{ textoCancelar }}
+            </button>
+            <button class="btn-modal btn-confirmar" (click)="onConfirmar()">
+                {{ textoConfirmar }}
+            </button>
+        </div>
+    </div>
+</div>

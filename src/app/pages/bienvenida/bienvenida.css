@@ -1,8 +1,43 @@
+/* bienvenida.css */
+
+.main {
+    padding: 20px;
+    text-align: center;
+}
+
+.seccion-acciones-principales {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-acceso-chat {
+    background: #007bff; /* Azul UTN */
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-acceso-chat:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
 .grilla-tarjetas {
     display: flex;
-    flex-wrap: wrap; /* Permite que bajen de línea si no entran en la pantalla */
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 30px; /* Espacio entre tarjeta y tarjeta */
+    gap: 30px;
     margin-top: 40px;
     width: 100%;
 }

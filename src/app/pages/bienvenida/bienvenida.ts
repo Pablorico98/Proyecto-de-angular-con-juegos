@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { RouterOutlet, RouterLink, Router} from '@angular/router'
 import { Card } from '../../components/card/card';
+import { ModalService } from '../../services/modal';
+import { ModalAviso } from '../../components/modal-aviso/modal-aviso';
+
 
 @Component({
   selector: 'app-bienvenida',
   standalone: true,
-  imports: [Card],
+  imports: [Card,RouterLink, RouterOutlet, ModalAviso],
   templateUrl: './bienvenida.html',
   styleUrl: './bienvenida.css',
 })
 export class Bienvenida {
-  
+  public modalService = inject(ModalService);
+  private router = inject(Router)
   
   misTarjetas = [
     {
@@ -37,5 +42,17 @@ export class Bienvenida {
       link: '#'
     }
   ];
+ irAlLogin() {
+  this.modalService.cerrar();
+    this.modalService.cerrar(); // Cerramos el modal antes de irnos
+    this.router.navigate(['/login'])
+}
+
+cerrarModal() {
+  this.modalService.cerrar();
+}
+
+
+
 
 }

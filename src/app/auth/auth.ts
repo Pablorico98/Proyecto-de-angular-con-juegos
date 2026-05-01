@@ -50,8 +50,8 @@ async iniciarSesion(email: string, pass: string) {
 async cerrarSesion() {
     const { error } = await this.supabase.auth.signOut();
     if (!error) {
-      this.usuarioActual.set(null); // Limpiamos el signal manualmente por las dudas
-      this.router.navigate(['/login']); // Ahora sí funciona
+      this.usuarioActual.set(null); // Limpiamos el signal manualmente
+      this.router.navigate(['/login']); // Redirigimos al login después de cerrar sesión
     }
   }
 }

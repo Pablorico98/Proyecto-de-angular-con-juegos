@@ -3,18 +3,38 @@
     <p>Este es el panel principal de tu gestor personal.</p>
     <p>Navegá desde el menú superior para iniciar sesión o registrarte.</p>
 
+    <!-- BOTÓN DE CHAT INDEPENDIENTE -->
+    <div class="seccion-acciones-principales">
+        <button routerLink="chat" class="btn-acceso-chat">
+            <span class="icon">💬</span> Abrir Chat Global
+        </button>
+    </div>
+
     <div class="grilla-tarjetas">
-        
         @for (item of misTarjetas; track item.titulo) {
-            
             <app-card 
                 [titulo]="item.titulo" 
                 [subtitulo]="item.subtitulo" 
                 [imagen]="item.imagen" 
                 [link]="item.link">
             </app-card>
-            
         }
-
     </div>
+
+    <!-- SECCIÓN DINÁMICA -->
+    <div class="seccion-chat">
+        <router-outlet></router-outlet>
+    </div>
+
+    <!-- MODAL DE AVISO -->
+    @if (modalService.mostrarModal()) {
+        <app-modal-aviso 
+            [titulo]="'Acceso Restringido'"
+            [mensaje]="'Para participar del chat global, primero debés iniciar sesión.'"
+            [textoConfirmar]="'Ir al Login'"
+            [textoCancelar]="'Cerrar'"
+            (confirmar)="irAlLogin()"
+            (cancelar)="cerrarModal()">
+        </app-modal-aviso>
+    }
 </div>

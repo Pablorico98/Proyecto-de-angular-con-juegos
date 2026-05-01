@@ -1,0 +1,72 @@
+/* modal-aviso.css */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* Oscurece el fondo */
+    backdrop-filter: blur(4px); /* Efecto de desenfoque opcional */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Siempre por encima de todo */
+}
+
+.modal-card {
+    background: #ffffff; /* Fondo sólido para que no sea transparente */
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border: 1px solid #ddd;
+    color: #333; /* Texto oscuro para contraste */
+}
+
+.modal-card h2 {
+    margin-top: 0;
+    color: #d9534f; /* Color de advertencia */
+}
+
+.modal-card p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Estilo para los botones del modal */
+.btn-modal {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-confirmar {
+    background: #0275d8;
+    color: white;
+}
+
+.btn-confirmar:hover {
+    background: #01549b;
+}
+
+.btn-cancelar {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.btn-cancelar:hover {
+    background: #e0e0e0;
+}
