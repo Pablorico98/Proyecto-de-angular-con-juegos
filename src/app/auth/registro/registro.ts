@@ -1,20 +1,23 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../auth';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ModalService } from '../../services/modal';
+import { ModalAviso } from '../../components/modal-aviso/modal-aviso';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, ModalAviso, RouterLink],
   templateUrl: './registro.html',
   styleUrl: './registro.css'
 })
 export class Registro {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
-  private router = inject(Router);
+  public router = inject(Router);
+  public modalService = inject(ModalService);
 
   // Definimos validaciones
   formRegistro: FormGroup = this.fb.group({
@@ -25,26 +28,33 @@ export class Registro {
     edad: ['', [Validators.required, Validators.min(18), Validators.max(99)]]
   });
 
-  async registrar() {
-    if (this.formRegistro.valid) {
-      console.log("Iniciando proceso de registro...");
-      const { email, password, nombre, apellido, edad } = this.formRegistro.value;
-      
-      try {
-        const { data, error } = await this.authService.registrarUsuario(
-          email, 
-          password, 
-          { nombre, apellido, edad }
-        );
-        if (error) {
-          console.error("Supabase devolvió un error:", error.message);
-        } else {
-          console.log('Usuario registrado:', data);
-          this.router.navigate(['/']); 
+async registrar() {
+  if (this.formRegistro.valid) {
+    const { email, password, nombre, apellido, edad } = this.formRegistro.value;
+    try {
+      const { error } = await this.authService.registrarUsuario(
+        email, 
+        password, 
+        { nombre, apellido, edad }
+      );
+      if (error) {
+        console.error("Error detectado:", error.message);
+        if (error.message.includes('already registered') || error.message.includes('already exists')) {
+          this.modalService.abrir();
         }
-      } catch (err) {
-        console.error('Error inesperado:', err);
+      } else {
+        this.router.navigate(['/']); 
       }
+    } catch (err) {
+      console.error('Error inesperado en el componente:', err);
     }
   }
+}
+
+irAlLogin() {
+  this.modalService.cerrar(); // Reseteamos el Signal a false
+  this.router.navigate(['/login']);
+}
+
+
 }

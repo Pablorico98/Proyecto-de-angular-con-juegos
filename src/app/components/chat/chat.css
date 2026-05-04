@@ -1,0 +1,115 @@
+/* chat.component.css */
+
+/* Contenedor principal del chat */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    /* ACÁ AGRANDAMOS EL ALTO: Aumentamos la altura base y la máxima */
+    height: 70vh; 
+    max-height: 650px; 
+    width: 100%; 
+    margin: 0; 
+    background: #1e1e2f; 
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #333;
+}
+
+/* Lista de mensajes con scroll */
+.mensajes-lista {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-image: radial-gradient(#2d2d44 1px, transparent 1px);
+    background-size: 20px 20px; 
+}
+
+/* Estilo de cada burbuja de mensaje */
+.mensaje {
+    background: #2a2a40;
+    color: #e0e0e0;
+    padding: 10px 15px;
+    border-radius: 12px 12px 12px 0;
+    max-width: 85%;
+    align-self: flex-start;
+    animation: fadeIn 0.3s ease;
+    border-left: 4px solid #007bff; 
+}
+
+.mensaje strong {
+    display: block;
+    font-size: 0.85rem;
+    color: #00d4ff; 
+    margin-bottom: 4px;
+}
+
+.mensaje span {
+    font-size: 1rem;
+    word-wrap: break-word;
+}
+
+.mensaje small {
+    display: block;
+    text-align: right;
+    font-size: 0.7rem;
+    color: #888;
+    margin-top: 5px;
+}
+
+/* Área de entrada de texto */
+.input-area {
+    display: flex;
+    padding: 15px;
+    background: #161625;
+    gap: 10px;
+    border-top: 1px solid #333;
+}
+
+.input-area input {
+    flex: 1;
+    background: #2d2d44;
+    border: 1px solid #444;
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.95rem;
+}
+
+.input-area input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.input-area button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.input-area button:hover {
+    background: #0056b3;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Personalización del scrollbar (Chrome/Safari) */
+.mensajes-lista::-webkit-scrollbar {
+    width: 6px;
+}
+.mensajes-lista::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 10px;
+}

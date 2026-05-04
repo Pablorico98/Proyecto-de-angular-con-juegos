@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrl: './modal-aviso.css'
 })
 export class ModalAviso {
-  @Input() titulo: string = 'Aviso';
+  @Input() titulo: string = ''; 
   @Input() mensaje: string = '';
   @Input() textoConfirmar: string = 'Aceptar';
   @Input() textoCancelar: string = 'Cancelar';

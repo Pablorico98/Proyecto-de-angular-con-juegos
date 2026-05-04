@@ -26,8 +26,10 @@ export class AuthService {
   }
 
  
-async registrarUsuario(email: string, pass: string, datosExtra: any) {
-  return await this.supabase.auth.signUp({
+// auth.service.ts
+
+async registrarUsuario(email: string, pass: string, datosExtra: { nombre: string, apellido: string, edad: number }) {
+  const { data, error: authError } = await this.supabase.auth.signUp({  //Crear el usuario en Auth
     email: email,
     password: pass,
     options: {
@@ -37,9 +39,26 @@ async registrarUsuario(email: string, pass: string, datosExtra: any) {
         edad: datosExtra.edad
       }
     }
+    
   });
-}
+  if (authError) {// Si hubo error en el registro de mail/pass, cortamos acá
+    return { data: null, error: authError };
+  }
+  if (data.user) {   // Si se creó bien el usuario, insertamos sus datos en la tabla pública
+    const { error: dbError } = await this.supabase.from('usuarios').insert({
+        id: data.user.id,  
+        nombre: datosExtra.nombre,
+        apellido: datosExtra.apellido,
+        edad: datosExtra.edad,
+        email: email
+      });
+    if (dbError) {
+      return { data: null, error: dbError };
+    }
+  }
 
+  return { data, error: null };
+}
 
 async iniciarSesion(email: string, pass: string) {
   return await this.supabase.auth.signInWithPassword({

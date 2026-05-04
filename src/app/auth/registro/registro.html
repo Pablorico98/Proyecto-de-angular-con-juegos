@@ -41,4 +41,15 @@
       </div>
     </form>
   </div>
+
+  @if (modalService.mostrarModal()) {
+    <app-modal-aviso 
+        [titulo]="'Usuario Existente'"
+        [mensaje]="'El correo ingresado ya se encuentra en nuestra base de datos. ¿Querés intentar iniciar sesión?'"
+        [textoConfirmar]="'Ir al Login'"
+        [textoCancelar]="'Cerrar'"
+        (confirmar)="irAlLogin()"
+        (cancelar)="modalService.cerrar()">
+    </app-modal-aviso>
+  }
 </div>

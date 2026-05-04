@@ -1,18 +1,35 @@
 /* bienvenida.css */
 
 .main {
-    padding: 20px;
+    padding: 5px 20px 20px 20px; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start; 
+}
+
+.main > h1, 
+.main > p, 
+.seccion-acciones-principales {
+    flex: 0 0 100%;
     text-align: center;
 }
 
+.main > h1 {
+    margin: 10px 0 5px 0;
+}
+.main > p {
+    margin: 2px 0;
+}
+
 .seccion-acciones-principales {
-    margin: 30px 0;
+    margin: 15px 0 35px 0; 
     display: flex;
     justify-content: center;
 }
 
 .btn-acceso-chat {
-    background: #007bff; /* Azul UTN */
+    background: #007bff; 
     color: white;
     padding: 14px 28px;
     border: none;
@@ -33,22 +50,51 @@
     box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
 }
 
-.grilla-tarjetas {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
-    width: 100%;
-}
-
-/* En bienvenida.css */
-
 .btn-cerrar-chat {
-    background: #6c757d !important; /* Gris oscuro o un color que contraste */
+    background: #6c757d !important;
     box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3) !important;
 }
 
 .btn-cerrar-chat:hover {
     background: #5a6268 !important;
+}
+
+/* --- LA MAGIA DEL ORDEN Y VISIBILIDAD --- */
+
+.seccion-chat {
+    display: none; 
+    order: 1; 
+    padding: 0; 
+    animation: slideRight 0.4s ease-out;
+}
+
+.seccion-chat:has(app-chat) {
+    display: flex;
+    /* ACÁ AGRANDAMOS EL ANCHO: Pasó de 360px a 450px */
+    flex: 0 0 450px; 
+    margin-right: 30px; 
+    margin-top: 0; 
+}
+
+.grilla-tarjetas {
+    order: 2; 
+    flex: 1;  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 0; 
+    min-width: 300px; 
+    transition: all 0.3s ease; 
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
