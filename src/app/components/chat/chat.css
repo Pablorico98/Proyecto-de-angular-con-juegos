@@ -1,10 +1,9 @@
 /* chat.component.css */
 
-/* Contenedor principal del chat */
+/* Contenedor principal del chat - Mantenemos tus dimensiones exactas */
 .chat-container {
     display: flex;
     flex-direction: column;
-    /* ACÁ AGRANDAMOS EL ALTO: Aumentamos la altura base y la máxima */
     height: 70vh; 
     max-height: 650px; 
     width: 100%; 
@@ -16,7 +15,7 @@
     border: 1px solid #333;
 }
 
-/* Lista de mensajes con scroll */
+/* Lista de mensajes con scroll y tu patrón de puntos */
 .mensajes-lista {
     flex: 1;
     padding: 20px;
@@ -28,16 +27,28 @@
     background-size: 20px 20px; 
 }
 
-/* Estilo de cada burbuja de mensaje */
+/* Estilo base para mensajes de OTROS */
 .mensaje {
     background: #2a2a40;
     color: #e0e0e0;
     padding: 10px 15px;
     border-radius: 12px 12px 12px 0;
     max-width: 85%;
-    align-self: flex-start;
+    align-self: flex-start; /* Alineado a la izquierda */
     animation: fadeIn 0.3s ease;
     border-left: 4px solid #007bff; 
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- NUEVO: Estilo para TUS mensajes --- */
+.mensaje.propio {
+    align-self: flex-end; /* Lo mueve a la derecha */
+    background: #007bff; /* Azul UTN */
+    border-left: none;
+    border-right: 4px solid #00d4ff; /* Acento a la derecha */
+    border-radius: 12px 12px 0 12px;
+    text-align: right;
 }
 
 .mensaje strong {
@@ -47,9 +58,15 @@
     margin-bottom: 4px;
 }
 
+/* Color de nombre para tus propios mensajes */
+.mensaje.propio strong {
+    color: #e0f2ff;
+}
+
 .mensaje span {
     font-size: 1rem;
     word-wrap: break-word;
+    color: white;
 }
 
 .mensaje small {
@@ -60,7 +77,11 @@
     margin-top: 5px;
 }
 
-/* Área de entrada de texto */
+.mensaje.propio small {
+    color: #d1e9ff;
+}
+
+/* Área de entrada de texto - Sin cambios */
 .input-area {
     display: flex;
     padding: 15px;
@@ -99,13 +120,12 @@
     background: #0056b3;
 }
 
-/* Animación de entrada */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Personalización del scrollbar (Chrome/Safari) */
+/* Personalización del scrollbar */
 .mensajes-lista::-webkit-scrollbar {
     width: 6px;
 }
