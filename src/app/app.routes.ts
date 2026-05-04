@@ -28,6 +28,7 @@ export const routes: Routes = [
   },
   { 
     path: '**', 
-    loadComponent: () => import('./pages/error/error').then(m => m.Error) 
+    redirectTo: '', // Esto lo manda a la raíz (Bienvenida)
+    pathMatch: 'full'
   }
 ];
