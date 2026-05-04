@@ -42,6 +42,11 @@ export class Bienvenida {
       link: '#'
     }
   ];
+
+ esChatActivo(): boolean {
+    return this.router.url.includes('/chat');
+  }
+
  irAlLogin() {
   this.modalService.cerrar();
     this.modalService.cerrar(); // Cerramos el modal antes de irnos

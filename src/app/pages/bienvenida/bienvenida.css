@@ -41,3 +41,14 @@
     margin-top: 40px;
     width: 100%;
 }
+
+/* En bienvenida.css */
+
+.btn-cerrar-chat {
+    background: #6c757d !important; /* Gris oscuro o un color que contraste */
+    box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3) !important;
+}
+
+.btn-cerrar-chat:hover {
+    background: #5a6268 !important;
+}

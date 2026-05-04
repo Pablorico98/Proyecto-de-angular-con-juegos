@@ -5,9 +5,16 @@
 
     <!-- BOTÓN DE CHAT INDEPENDIENTE -->
     <div class="seccion-acciones-principales">
-        <button routerLink="chat" class="btn-acceso-chat">
-            <span class="icon">💬</span> Abrir Chat Global
-        </button>
+        @if (!esChatActivo()) {
+            <button routerLink="chat" class="btn-acceso-chat">
+                <span class="icon">💬</span> Abrir Chat Global
+            </button>
+        } 
+        @else {
+            <button routerLink="/" class="btn-acceso-chat btn-cerrar-chat">
+                <span class="icon">❌</span> Cerrar Chat
+            </button>
+        }
     </div>
 
     <div class="grilla-tarjetas">
