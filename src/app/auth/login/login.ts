@@ -12,8 +12,8 @@ import { Router , RouterLink} from '@angular/router';
 })
 export class Login {
   private fb = inject(FormBuilder);
-  private authService = inject(AuthService);
   private router = inject(Router);
+  private authService = inject(AuthService);
 
   formLogin: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],

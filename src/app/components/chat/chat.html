@@ -5,10 +5,13 @@
       <div class="mensaje" [class.propio]="msj.user_id === usuarioId">
         
         @if (msj.user_id !== usuarioId) {
+          
           <strong>{{ msj.nombre_usuario }}</strong>
         }
         
         <p>{{ msj.contenido }}</p>
+        
+        <!-- displayed -->
         
         <small>{{ msj.created_at | date:'HH:mm' }}</small>
       </div>
