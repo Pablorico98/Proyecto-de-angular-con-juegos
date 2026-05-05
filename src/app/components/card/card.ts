@@ -1,8 +1,10 @@
 import { Component , input} from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-card',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './card.html',
   styleUrl: './card.css',
 })
@@ -11,5 +13,5 @@ export class Card {
   titulo = input('Título por defecto');
   subtitulo = input('Subtítulo por defecto');
   imagen = input('URL por defecto');
-  link = input('#');
+  link = input('/');
 }

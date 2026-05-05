@@ -17,11 +17,11 @@ export class Bienvenida {
   private router = inject(Router)
   
   misTarjetas = [
-    {
-      titulo: 'Aprender Angular',
-      subtitulo: 'Rutas y Lazy Loading',
-      imagen: 'https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=300', 
-      link: '#'
+   {
+      titulo: 'Ahorcado',
+      subtitulo: 'Adiviná la palabra oculta antes de perder tus vidas.',
+      imagen: 'ahorcado.png',  
+      link: '/juegos/ahorcado'
     },
     {
       titulo: 'Base de Datos',
@@ -46,7 +46,7 @@ export class Bienvenida {
  esChatActivo(): boolean {
     return this.router.url.includes('/chat');
   }
-
+  
  irAlLogin() {
   this.modalService.cerrar();
     this.modalService.cerrar(); // Cerramos el modal antes de irnos

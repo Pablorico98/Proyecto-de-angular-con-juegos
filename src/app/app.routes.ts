@@ -27,8 +27,14 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/sobre-mi/sobre-mi').then(m => m.SobreMi) 
   },
   { 
+    path: 'juegos/ahorcado', 
+    loadComponent: () => import('./juegos/ahorcado/ahorcado').then(m => m.AhorcadoComponent),
+    canActivate: [authGuard]
+  },
+
+  { 
     path: '**', 
-    redirectTo: '', // Esto lo manda a la raíz (Bienvenida)
+    redirectTo: '', 
     pathMatch: 'full'
   }
 ];

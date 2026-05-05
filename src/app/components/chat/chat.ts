@@ -24,6 +24,7 @@ export class Chat implements OnInit, OnDestroy {
     this.usuarioId = this.authService.usuarioActual()?.id || ''; // Obtenemos el ID del usuario actual para diferenciar mensajes
     const data = await this.chatService.obtenerMensajes(); // 1. Traer mensajes ya existentes
     this.mensajes.set(data);
+    this.hacerScroll();
     this.chatService.canal    // 2. Suscribirse al canal de tiempo real 
       .on('postgres_changes',
         {

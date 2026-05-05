@@ -1,6 +1,6 @@
 <div class="main">
-    <h1>¡Bienvenido a Tareas!</h1>
-    <p>Este es el panel principal de tu gestor personal.</p>
+    <h1>¡Bienvenido a sala de juegos!</h1>
+    
     <p>Navegá desde el menú superior para iniciar sesión o registrarte.</p>
 
     <!-- BOTÓN DE CHAT INDEPENDIENTE -->
@@ -37,7 +37,7 @@
     @if (modalService.mostrarModal()) {
         <app-modal-aviso 
             [titulo]="'Acceso Restringido'"
-            [mensaje]="'Para participar del chat global, primero debés iniciar sesión.'"
+            [mensaje]="'Para participar del chat global o acceder a los juegos, primero debés iniciar sesión.'"
             [textoConfirmar]="'Ir al Login'"
             [textoCancelar]="'Cerrar'"
             (confirmar)="irAlLogin()"

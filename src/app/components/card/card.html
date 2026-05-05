@@ -1,10 +1,9 @@
 <div class="card-glass">
     <img [src]="imagen()" alt="Imagen de proyecto" class="card-img">
-    
     <div class="card-content">
         <h3>{{ titulo() }}</h3>
         <p>{{ subtitulo() }}</p>
-        
-        <a [href]="link()" target="_blank" class="card-btn">Ver más</a>
+        <!-- Reemplazamos href por routerLink y quitamos target="_blank" -->
+        <a [routerLink]="link()" class="card-btn">Jugar ahora</a>
     </div>
 </div>

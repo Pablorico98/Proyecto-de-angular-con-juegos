@@ -1,0 +1,52 @@
+<div class="pantalla-juego">
+    <button class="btn-volver" (click)="salirDelJuego()">← Volver al inicio</button>
+
+    <!-- CAJA DEL MINIJUEGO -->
+    <div class="mini-juego-box">
+        <div class="hud-juego">
+            <div class="stat-box vidas">
+                <span class="icon">❤️</span> 
+                <div class="stat-info">
+                    <small>VIDAS</small>
+                    <strong>{{ intentosMaximos - intentosFallidos() }} / {{ intentosMaximos }}</strong>
+                </div>
+            </div>
+            
+            <div class="stat-box tiempo">
+                <span class="icon">⏱️</span>
+                <div class="stat-info">
+                    <small>TIEMPO</small>
+                    <strong>{{ tiempoTranscurrido() }}s</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="palabra-display">
+            {{ palabraMostrada() }}
+        </div>
+
+        <div class="teclado">
+            @for (letra of letras; track letra) {
+                <button 
+                    class="btn-letra"
+                    (click)="seleccionarLetra(letra)"
+                    [disabled]="letrasSeleccionadas().includes(letra) || mostrarModalJuego"
+                    [class.usada]="letrasSeleccionadas().includes(letra)">
+                    {{ letra }}
+                </button>
+            }
+        </div>
+    </div>
+
+    <!-- Modal propio del juego -->
+    @if (mostrarModalJuego) {
+        <app-modal-aviso
+            [titulo]="modalTitulo"
+            [mensaje]="modalMensaje"
+            [textoConfirmar]="'Jugar de nuevo'"
+            [textoCancelar]="'Salir'"
+            (confirmar)="iniciarJuego()"
+            (cancelar)="salirDelJuego()">
+        </app-modal-aviso>
+    }
+</div>
