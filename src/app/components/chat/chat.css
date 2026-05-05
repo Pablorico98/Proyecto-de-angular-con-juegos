@@ -1,21 +1,20 @@
-/* chat.component.css */
+/* chat.component.css - ARCHIVO COMPLETO */
 
-/* Contenedor principal del chat - Mantenemos tus dimensiones exactas */
+/* Contenedor principal del chat */
 .chat-container {
     display: flex;
     flex-direction: column;
-    height: 70vh; 
-    max-height: 650px; 
-    width: 100%; 
-    margin: 0; 
-    background: #1e1e2f; 
+    width: 100%;
+    height: 100%; /* CLAVE: Toma el alto dinámico que le pasa bienvenida.css */
+    margin: 0;
+    background: #1e1e2f;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border: 1px solid #333;
 }
 
-/* Lista de mensajes con scroll y tu patrón de puntos */
+/* Lista de mensajes con scroll y fondo */
 .mensajes-lista {
     flex: 1;
     padding: 20px;
@@ -25,7 +24,7 @@
     gap: 12px;
     scroll-behavior: smooth;
     background-image: radial-gradient(#2d2d44 1px, transparent 1px);
-    background-size: 20px 20px; 
+    background-size: 20px 20px;
 }
 
 /* Estilo base para mensajes de OTROS */
@@ -37,17 +36,17 @@
     max-width: 85%;
     align-self: flex-start; /* Alineado a la izquierda */
     animation: fadeIn 0.3s ease;
-    border-left: 4px solid #007bff; 
+    border-left: 4px solid #007bff;
     display: flex;
     flex-direction: column;
 }
 
-/* --- NUEVO: Estilo para TUS mensajes --- */
+/* Estilo para TUS mensajes */
 .mensaje.propio {
     align-self: flex-end; /* Lo mueve a la derecha */
-    background: #007bff; /* Azul UTN */
+    background: #007bff; 
     border-left: none;
-    border-right: 4px solid #00d4ff; /* Acento a la derecha */
+    border-right: 4px solid #00d4ff; 
     border-radius: 12px 12px 0 12px;
     text-align: right;
 }
@@ -55,7 +54,7 @@
 .mensaje strong {
     display: block;
     font-size: 0.85rem;
-    color: #00d4ff; 
+    color: #00d4ff;
     margin-bottom: 4px;
 }
 
@@ -64,10 +63,17 @@
     color: #e0f2ff;
 }
 
-.mensaje span {
+/* Texto del mensaje */
+.mensaje p {
     font-size: 1rem;
     word-wrap: break-word;
     color: white;
+    margin: 0; /* Aseguramos que no tenga margin extra que rompa el globo */
+    text-align: left;
+}
+
+.mensaje.propio p {
+    text-align: right;
 }
 
 .mensaje small {
@@ -82,7 +88,7 @@
     color: #d1e9ff;
 }
 
-/* Área de entrada de texto - Sin cambios */
+/* Área de entrada de texto */
 .input-area {
     display: flex;
     padding: 15px;
@@ -126,10 +132,11 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Personalización del scrollbar */
+/* Personalización de la barra de scroll */
 .mensajes-lista::-webkit-scrollbar {
     width: 6px;
 }
+
 .mensajes-lista::-webkit-scrollbar-thumb {
     background: #444;
     border-radius: 10px;
