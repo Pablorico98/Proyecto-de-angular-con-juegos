@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './auth/guards/auth-guard'; // Ruta según tu captura
+import { authGuard } from './auth/guards/auth-guard'; 
 
 export const routes: Routes = [
   { 
     path: '', 
     loadComponent: () => import('./pages/bienvenida/bienvenida').then(m => m.Bienvenida),
-    // Definimos los hijos de la página principal
+    
     children: [
       { 
         path: 'chat', 

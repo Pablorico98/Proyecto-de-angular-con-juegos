@@ -21,11 +21,11 @@ export class Chat implements OnInit, OnDestroy {
 
   async ngOnInit() {
     
-    this.usuarioId = this.authService.usuarioActual()?.id || ''; // Obtenemos el ID del usuario actual para diferenciar mensajes
-    const data = await this.chatService.obtenerMensajes(); // 1. Traer mensajes ya existentes
+    this.usuarioId = this.authService.usuarioActual()?.id || '';  
+    const data = await this.chatService.obtenerMensajes(); 
     this.mensajes.set(data);
     this.hacerScroll();
-    this.chatService.canal    // 2. Suscribirse al canal de tiempo real 
+    this.chatService.canal     
       .on('postgres_changes',
         {
           event: 'INSERT',
@@ -33,7 +33,7 @@ export class Chat implements OnInit, OnDestroy {
           table: 'mensajes',
         },
         (mensajeActual) => {
-          this.mensajes.update((prev) => [...prev, mensajeActual.new]); // Actualizamos el signal con el nuevo mensaje
+          this.mensajes.update((prev) => [...prev, mensajeActual.new]);
           this.hacerScroll();
         }
       )
@@ -41,7 +41,7 @@ export class Chat implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.chatService.canal.unsubscribe(); // Desuscribirse al salir para evitar fugas de memoria 
+    this.chatService.canal.unsubscribe();  
   }
 
   async mandar() {
