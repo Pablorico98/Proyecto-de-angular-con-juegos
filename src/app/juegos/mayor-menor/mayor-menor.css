@@ -1,0 +1,152 @@
+.pantalla-juego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 100px);
+    padding: 20px;
+}
+
+.mini-juego-box {
+    background: linear-gradient(145deg, #161b22, #0d1117);
+    border: 2px solid #30363d;
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- HUD: IZQUIERDA Y DERECHA --- */
+.hud-juego {
+    display: flex;
+    justify-content: space-between; /* Uno a cada punta */
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.stat-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-mediano {
+    font-size: 2.2rem; /* Icono más grande que el texto */
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.stat-info small {
+    color: #8b949e;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.stat-info strong {
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+/* --- CARTA --- */
+.mesa-cartas {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.carta-box {
+    width: 140px;
+    height: 200px;
+    background: #f0f6fc;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+    box-shadow: 0 0 25px rgba(88, 166, 255, 0.3);
+}
+
+.numero-carta {
+    font-size: 5rem;
+    color: #0d1117;
+    font-weight: 900;
+}
+
+.instruccion {
+    color: #c9d1d9;
+    font-size: 1.1rem;
+}
+
+/* --- BOTONES --- */
+.controles-juego {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.btn-juego {
+    flex: 1;
+    padding: 18px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    color: white;
+}
+
+.btn-mayor { background-color: #238636; }
+.btn-menor { background-color: #da3633; }
+
+.btn-juego:hover:not(:disabled) {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+}
+
+.btn-juego:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+/* Botón Volver - Estilo Premium y Centrado */
+.btn-volver {
+    background-color: rgba(255, 255, 255, 0.05); /* Fondo sutil traslúcido */
+    color: #8b949e;
+    border: 1px solid #30363d;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0 auto 25px auto; /* Centrado horizontal y margen abajo */
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content; /* Se ajusta solo al texto, no se estira */
+}
+
+.btn-volver:hover {
+    background-color: #21262d;
+    color: #58a6ff; /* Azul característico de tu app */
+    border-color: #58a6ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(88, 166, 255, 0.15);
+}
+
+.btn-volver:active {
+    transform: translateY(0);
+}

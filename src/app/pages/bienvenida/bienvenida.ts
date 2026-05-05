@@ -24,10 +24,10 @@ export class Bienvenida {
       link: '/juegos/ahorcado'
     },
     {
-      titulo: 'Base de Datos',
-      subtitulo: 'Consultas SQL',
-      imagen: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=300',
-      link: '#'
+      titulo: 'Mayor o Menor',
+      subtitulo: 'Adiviná si la próxima carta es mayor o menor que la actual.',
+      imagen: 'mayor_menor.png',
+      link: '/juegos/mayor-menor'
     },
     {
       titulo: 'Diseño Web',

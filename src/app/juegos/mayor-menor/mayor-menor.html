@@ -1,0 +1,54 @@
+<div class="pantalla-juego">
+    <button class="btn-volver" (click)="salir()">
+        <span class="icon-back">⬅</span> Volver al Inicio
+    </button>
+
+    <div class="mini-juego-box">
+        
+        <!-- HUD: Aciertos a la izquierda, Racha a la derecha -->
+        <div class="hud-juego">
+            <div class="stat-box aciertos">
+                <span class="icon-mediano">🏆</span>
+                <div class="stat-info">
+                    <small>ACIERTOS</small>
+                    <strong>{{ aciertos() }}</strong>
+                </div>
+            </div>
+            
+            <div class="stat-box racha">
+                <div class="stat-info align-right">
+                    <small>RACHA ACTUAL</small>
+                    <strong>{{ rachaActual() }}</strong>
+                </div>
+                <span class="icon-mediano">🔥</span>
+            </div>
+        </div>
+
+        <div class="mesa-cartas">
+            <div class="carta-box">
+                <span class="numero-carta">{{ cartaActual() }}</span>
+            </div>
+            <p class="instruccion">¿La próxima carta será...?</p>
+        </div>
+
+        <div class="controles-juego">
+            <button class="btn-juego btn-mayor" (click)="jugar('mayor')" [disabled]="mostrarModalJuego">
+                MAYOR ▲
+            </button>
+            <button class="btn-juego btn-menor" (click)="jugar('menor')" [disabled]="mostrarModalJuego">
+                MENOR ▼
+            </button>
+        </div>
+    </div>
+
+    @if (mostrarModalJuego) {
+        <app-modal-aviso
+            [titulo]="modalTitulo"
+            [mensaje]="modalMensaje"
+            [textoConfirmar]="'Jugar de nuevo'"
+            [textoCancelar]="'Salir'"
+            (confirmar)="iniciarJuego()"
+            (cancelar)="salir()">
+        </app-modal-aviso>
+    }
+</div>

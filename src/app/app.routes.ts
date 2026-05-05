@@ -31,7 +31,11 @@ export const routes: Routes = [
     loadComponent: () => import('./juegos/ahorcado/ahorcado').then(m => m.AhorcadoComponent),
     canActivate: [authGuard]
   },
-
+ { 
+  path: 'juegos/mayor-menor', 
+  loadComponent: () => import('./juegos/mayor-menor/mayor-menor').then(m => m.MayorMenorComponent),
+  canActivate: [authGuard] 
+ },
   { 
     path: '**', 
     redirectTo: '', 
