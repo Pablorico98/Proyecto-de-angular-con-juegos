@@ -1,0 +1,55 @@
+<div class="main-juego">
+  <button routerLink="/" class="btn-volver">
+    <span class="icon">⬅</span> Volver
+  </button>
+
+  <div class="juego-container">
+    
+    <div class="header-juego">
+      <h2>Preguntados</h2>
+      <div class="stats">
+        <div class="stat-badge vidas">
+          <span>❤️ Vidas:</span> <strong>{{ vidas() }}</strong>
+        </div>
+        <div class="stat-badge puntos">
+          <span>⭐ Puntos:</span> <strong>{{ puntos() }}</strong>
+        </div>
+      </div>
+    </div>
+
+    @if (preguntaActual()) {
+      <div class="pregunta-box">
+        <h3>{{ preguntaActual()?.pregunta }}</h3>
+      </div>
+
+      <div class="opciones-grid">
+        @for (opcion of opcionesMezcladas(); track opcion) {
+          <button 
+            class="btn-opcion"
+            [disabled]="bloquearBotones()"
+            [class.correcta]="respuestaSeleccionada() !== null && opcion === preguntaActual()?.respuestaCorrecta"
+            [class.incorrecta]="respuestaSeleccionada() === opcion && opcion !== preguntaActual()?.respuestaCorrecta"
+            (click)="evaluarRespuesta(opcion)">
+            {{ opcion }}
+          </button>
+        }
+      </div>
+    } @else {
+      <div class="loading-box">
+        <p>Cargando preguntas...</p>
+      </div>
+    }
+
+  </div>
+
+  @if (modalService.mostrarModal()) {
+    <app-modal-aviso 
+        [titulo]="'¡Juego Terminado!'"
+        [mensaje]="mensajeFinal()"
+        [textoConfirmar]="'Jugar de nuevo'"
+        [textoCancelar]="'Salir al Menú'"
+        (confirmar)="reiniciar()"
+        (cancelar)="salir()">
+    </app-modal-aviso>
+  }
+</div>

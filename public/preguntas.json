@@ -1,0 +1,92 @@
+[
+  {
+    "pregunta": "¿Qué lenguaje de programación es la base de Angular?",
+    "respuestaCorrecta": "TypeScript",
+    "respuestasIncorrectas": [
+      "Python",
+      "PHP",
+      "C#"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa la sigla HTML?",
+    "respuestaCorrecta": "HyperText Markup Language",
+    "respuestasIncorrectas": [
+      "High Text Machine Language",
+      "Hyper Tabular Main Log",
+      "HyperTech Multi Language"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál de estos NO es un tipo de dato en JavaScript?",
+    "respuestaCorrecta": "Float",
+    "respuestasIncorrectas": [
+      "Boolean",
+      "String",
+      "Number"
+    ]
+  },
+  {
+    "pregunta": "¿Qué propiedad CSS se usa para cambiar el color de fondo?",
+    "respuestaCorrecta": "background-color",
+    "respuestasIncorrectas": [
+      "color",
+      "bg-style",
+      "fill-color"
+    ]
+  },
+  {
+    "pregunta": "¿Qué comando de Git se usa para subir cambios al repositorio remoto?",
+    "respuestaCorrecta": "git push",
+    "respuestasIncorrectas": [
+      "git commit",
+      "git upload",
+      "git send"
+    ]
+  },
+  {
+    "pregunta": "¿Cuál es el componente que se considera el 'cerebro' de una computadora?",
+    "respuestaCorrecta": "CPU",
+    "respuestasIncorrectas": [
+      "RAM",
+      "GPU",
+      "SSD"
+    ]
+  },
+  {
+    "pregunta": "¿Qué resultado devuelve la expresión lógica: true && false?",
+    "respuestaCorrecta": "false",
+    "respuestasIncorrectas": [
+      "true",
+      "undefined",
+      "null"
+    ]
+  },
+  {
+    "pregunta": "¿Qué lenguaje se utiliza para realizar consultas en bases de datos relacionales?",
+    "respuestaCorrecta": "SQL",
+    "respuestasIncorrectas": [
+      "JSON",
+      "HTML",
+      "C++"
+    ]
+  },
+  {
+    "pregunta": "¿Qué significa la sigla IP en redes?",
+    "respuestaCorrecta": "Internet Protocol",
+    "respuestasIncorrectas": [
+      "Internal Process",
+      "Instant Point",
+      "Instruction Path"
+    ]
+  },
+  {
+    "pregunta": "En Angular, ¿qué decorador se usa para definir un componente?",
+    "respuestaCorrecta": "@Component",
+    "respuestasIncorrectas": [
+      "@Injectable",
+      "@NgModule",
+      "@Directive"
+    ]
+  }
+]

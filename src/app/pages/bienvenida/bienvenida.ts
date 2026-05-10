@@ -30,10 +30,10 @@ export class Bienvenida {
       link: '/juegos/mayor-menor'
     },
     {
-      titulo: 'Diseño Web',
-      subtitulo: 'CSS y Glassmorphism',
-      imagen: 'https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?q=80&w=300',
-      link: '#'
+      titulo: 'Preguntados',
+      subtitulo: 'Respondé preguntas de cultura general y pon a prueba tus conocimientos.',
+      imagen: 'preguntados.png',
+      link: '/juegos/preguntados'
     },
     {
       titulo: 'Lógica Backend',

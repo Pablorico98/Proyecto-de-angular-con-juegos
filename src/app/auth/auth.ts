@@ -73,6 +73,16 @@ async cerrarSesion() {
       this.router.navigate(['/login']); // Redirigimos al login después de cerrar sesión
     }
   }
+async tieneSesionPromise(): Promise<boolean> {
+    const { data } = await this.supabase.auth.getSession();
+    return data.session !== null;
+  }
+
+
+
+
+
+
 }
 
 

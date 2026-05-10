@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './auth/guards/auth-guard'; 
+import { noAuthGuard } from './auth/guards/no-auth-guard';
 
 export const routes: Routes = [
   { 
@@ -16,11 +17,13 @@ export const routes: Routes = [
   },
   { 
     path: 'login', 
-    loadComponent: () => import('./auth/login/login').then(m => m.Login) 
+    loadComponent: () => import('./auth/login/login').then(m => m.Login), 
+    canActivate: [noAuthGuard]  
   },
   { 
     path: 'registro', 
-    loadComponent: () => import('./auth/registro/registro').then(m => m.Registro) 
+    loadComponent: () => import('./auth/registro/registro').then(m => m.Registro),
+    canActivate: [noAuthGuard]  
   },
   { 
     path: 'sobre-mi', 
@@ -34,6 +37,10 @@ export const routes: Routes = [
  { 
   path: 'juegos/mayor-menor', 
   loadComponent: () => import('./juegos/mayor-menor/mayor-menor').then(m => m.MayorMenorComponent),
+  canActivate: [authGuard] 
+ },
+ { path: 'juegos/preguntados', 
+  loadComponent: () => import('./juegos/preguntados/preguntados').then(m => m.PreguntadosComponent),
   canActivate: [authGuard] 
  },
   { 

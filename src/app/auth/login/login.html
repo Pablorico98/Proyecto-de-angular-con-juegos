@@ -6,12 +6,20 @@
     <form [formGroup]="formLogin" (ngSubmit)="entrar()">
       <div class="form-group">
         <label>Correo electrónico</label>
-        <input type="email" formControlName="email" placeholder="nombre@ejemplo.com">
+        <input type="email" formControlName="email" placeholder="nombre@ejemplo.com"
+               [class.is-invalid]="formLogin.get('email')?.invalid && formLogin.get('email')?.touched">
+        @if (formLogin.get('email')?.invalid && formLogin.get('email')?.touched) {
+          <small class="error-message">Ingresá un correo válido.</small>
+        }
       </div>
 
       <div class="form-group">
         <label>Contraseña</label>
-        <input type="password" formControlName="password" placeholder="••••••••">
+        <input type="password" formControlName="password" placeholder="••••••••"
+               [class.is-invalid]="formLogin.get('password')?.invalid && formLogin.get('password')?.touched">
+        @if (formLogin.get('password')?.invalid && formLogin.get('password')?.touched) {
+          <small class="error-message">La contraseña es obligatoria.</small>
+        }
       </div>
 
       <button type="submit" [disabled]="formLogin.invalid" class="btn-login">

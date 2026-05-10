@@ -1,0 +1,171 @@
+/* --- CONTENEDOR GENERAL --- */
+.main-juego {
+    padding: 20px;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- BOTÓN VOLVER (Idéntico a Ahorcado/MayorMenor) --- */
+.btn-volver {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #8b949e;
+    border: 1px solid #30363d;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0 auto 25px auto;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+}
+
+.btn-volver:hover {
+    background-color: #21262d;
+    color: #58a6ff;
+    border-color: #58a6ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(88, 166, 255, 0.15);
+}
+
+.btn-volver:active {
+    transform: translateY(0);
+}
+
+/* --- CAJA DEL JUEGO (Estilo Glass) --- */
+.juego-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* --- CABECERA Y ESTADÍSTICAS --- */
+.header-juego {
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.header-juego h2 {
+    color: #fff;
+    margin: 0 0 15px 0;
+    font-size: 2.2rem;
+    text-shadow: 0 0 10px #58a6ff;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.stat-badge {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.stat-badge.vidas strong { color: #ff5858; }
+.stat-badge.puntos strong { color: #ffca28; }
+
+/* --- SECCIÓN DE LA PREGUNTA --- */
+.pregunta-box {
+    background: rgba(88, 166, 255, 0.1);
+    padding: 25px 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(88, 166, 255, 0.2);
+}
+
+.pregunta-box h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.loading-box {
+    color: #8b949e;
+    padding: 40px;
+    font-style: italic;
+}
+
+/* --- BOTONES DE OPCIONES --- */
+.opciones-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.btn-opcion {
+    background: #21262d;
+    color: #e0e0e0;
+    border: 1px solid #30363d;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    word-wrap: break-word;
+}
+
+.btn-opcion:hover:not(:disabled) {
+    background: #30363d;
+    border-color: #58a6ff;
+    transform: translateY(-2px);
+}
+
+.btn-opcion:disabled {
+    cursor: default;
+    opacity: 0.9;
+}
+
+/* --- FEEDBACK VISUAL (Verde / Rojo) --- */
+.btn-opcion.correcta {
+    background: #238636 !important;
+    border-color: #2ea043 !important;
+    color: white;
+    box-shadow: 0 0 15px rgba(46, 160, 67, 0.4);
+}
+
+.btn-opcion.incorrecta {
+    background: #da3633 !important;
+    border-color: #f85149 !important;
+    color: white;
+    animation: shake 0.4s ease-in-out;
+}
+
+/* Animación de error */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 500px) {
+    .opciones-grid {
+        grid-template-columns: 1fr; /* Pone los botones uno debajo de otro en el celular */
+    }
+    
+    .juego-container {
+        padding: 20px 15px;
+    }
+}
