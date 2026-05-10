@@ -33,7 +33,6 @@ export class MayorMenorComponent implements OnInit {
     this.cartaActual.set(this.generarNumero());
     this.proximaCarta.set(this.generarNumero());
     this.aciertos.set(0);
-    this.rachaActual.set(0);
     this.mostrarModalJuego = false;
   }
 
@@ -50,8 +49,7 @@ export class MayorMenorComponent implements OnInit {
                       (eleccion === 'menor' && proxima <= actual);
 
     if (ganoRonda) {
-      this.aciertos.update(v => v + 1);
-      this.rachaActual.update(v => v + 1);
+      this.aciertos.update(v => v + 1)
       this.avanzarRonda();
     } else {
       await this.finalizarJuego();
@@ -65,13 +63,12 @@ export class MayorMenorComponent implements OnInit {
 
   async finalizarJuego() {
     this.modalTitulo = '¡Perdiste!';
-    this.modalMensaje = `Lograste un total de ${this.aciertos()} aciertos con una racha final de ${this.rachaActual()}.`;
+    this.modalMensaje = `Lograste un total de ${this.aciertos()} aciertos.`;
     this.mostrarModalJuego = true;
 
     // Guardar estadísticas en Supabase
     await this.juegosService.guardarResultado('mayor-menor', {
-      aciertos_totales: this.aciertos(),
-      maxima_racha: this.rachaActual()
+      aciertos_totales: this.aciertos()
     });
   }
 
