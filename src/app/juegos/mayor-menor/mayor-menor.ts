@@ -71,8 +71,7 @@ export class MayorMenorComponent implements OnInit {
     // Guardar estadísticas en Supabase
     await this.juegosService.guardarResultado('mayor-menor', {
       aciertos_totales: this.aciertos(),
-      maxima_racha: this.rachaActual(),
-      fecha: new Date().toISOString()
+      maxima_racha: this.rachaActual()
     });
   }
 
