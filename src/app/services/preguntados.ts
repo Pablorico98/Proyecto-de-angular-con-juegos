@@ -12,7 +12,7 @@ export interface Pregunta {
 })
 export class PreguntadosService {
   private http = inject(HttpClient);
-  private jsonUrl = 'preguntas.json'; 
+  private jsonUrl = 'https://mocki.io/v1/658d95e2-0aff-49c6-8460-8214008355f3'; 
 
 
   obtenerPreguntas() {
