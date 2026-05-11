@@ -16,14 +16,17 @@
       <div class="form-group">
         <label>Contraseña</label>
         <input type="password" formControlName="password" placeholder="••••••••"
-               [class.is-invalid]="formLogin.get('password')?.invalid && formLogin.get('password')?.touched">
-        @if (formLogin.get('password')?.invalid && formLogin.get('password')?.touched) {
+               [class.is-invalid]="(formLogin.get('password')?.invalid && formLogin.get('password')?.touched) || errorLogin()">
+        
+        @if (errorLogin()) {
+          <small class="error-message">{{ errorLogin() }}</small>
+        } @else if (formLogin.get('password')?.invalid && formLogin.get('password')?.touched) {
           <small class="error-message">La contraseña es obligatoria.</small>
         }
       </div>
 
-      <button type="submit" [disabled]="formLogin.invalid" class="btn-login">
-        Iniciar Sesión
+      <button type="submit" [disabled]="formLogin.invalid || cargando()" class="btn-login">
+        {{ cargando() ? 'Iniciando sesión...' : 'Iniciar Sesión' }}
       </button>
     </form>
 
