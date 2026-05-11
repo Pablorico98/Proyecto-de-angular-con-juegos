@@ -1,0 +1,133 @@
+.main-container {
+    padding: 20px 2%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.titulo-principal {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+}
+
+/* 1. Ajuste de Grilla: 4 columnas en PC, 2 en tablets, 1 en celular */
+.tablas-grid {
+    display: grid;
+    /* Reducimos el minmax a 280px para que entren 4 cómodamente */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px;
+}
+
+.tabla-card {
+    background: linear-gradient(145deg, #161b22, #0d1117);
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.tabla-card h2 {
+    color: #58a6ff;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2rem; /* Título más chico */
+    text-align: left;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 8px;
+}
+
+/* 2. Límite de largo y scroll interno */
+.table-responsive {
+    max-height: 350px; /* Ajustá este valor según qué tan largas quieras las tablas */
+    overflow-y: auto;
+    border-radius: 4px;
+}
+
+.glass-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #c9d1d9;
+    text-align: left;
+}
+
+/* 3. Encabezado fijo (Sticky) */
+.glass-table thead th {
+    position: sticky;
+    top: 0;
+    background: #161b22; /* Mismo fondo que la card para que no se vea transparente al scrollear */
+    padding: 10px;
+    font-weight: 600;
+    color: #8b949e;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    z-index: 1;
+    border-bottom: 2px solid #30363d;
+}
+
+.glass-table td {
+    padding: 10px;
+    border-bottom: 1px solid #21262d;
+    font-size: 0.9rem; /* Fuente un poco más chica */
+}
+
+/* Personalización del scrollbar para que sea fino y combine */
+.table-responsive::-webkit-scrollbar {
+    width: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #30363d;
+    border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #58a6ff;
+}
+
+/* Badges más compactos */
+.badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.tabla-header-acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 8px;
+}
+
+.tabla-header-acciones h2 {
+    margin: 0;
+    border: none;
+    padding: 0;
+}
+
+.btn-orden {
+    background: #21262d;
+    color: #58a6ff;
+    border: 1px solid #30363d;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-orden:hover {
+    background: #30363d;
+    border-color: #58a6ff;
+}

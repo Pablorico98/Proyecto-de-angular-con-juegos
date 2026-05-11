@@ -23,11 +23,11 @@ export class ECardComponent implements OnInit {
   rachaVictorias = signal(0);
   bandoJugador = signal<'emperador' | 'esclavo' | null>(null);
 
-  // --- MANOS (Nuestros arrays de cartas) ---
+  // --- MANOS  
   manoJugador = signal<string[]>([]);
   manoCpu = signal<string[]>([]);
 
-  // --- MESA (Para mostrar qué se jugó durante el delay) ---
+  // --- MESA  ---
   cartaJugada = signal<string | null>(null);
   cartaCpu = signal<string | null>(null);
   resultadoMano = signal<string>(''); // 'victoria', 'derrota', 'empate'
@@ -67,7 +67,7 @@ export class ECardComponent implements OnInit {
   repartirCartas(bandoElegido: 'emperador' | 'esclavo') {
     this.bandoJugador.set(bandoElegido);
     
-    // Armamos los mazos según las reglas de Kaiji
+    // mazos predefinidos para cada bando
     const mazoEmperador = ['ciudadano', 'ciudadano', 'ciudadano', 'ciudadano', 'emperador'];
     const mazoEsclavo = ['ciudadano', 'ciudadano', 'ciudadano', 'ciudadano', 'esclavo'];
 
@@ -80,7 +80,7 @@ export class ECardComponent implements OnInit {
     }
   }
 
-  // 3. LA JUGADA (El clic en el HTML)
+  // 3. LA JUGADA  
   jugarCarta(indiceCarta: number) {
     if (this.bloquearMesa()) return;
     this.bloquearMesa.set(true);
@@ -174,7 +174,7 @@ export class ECardComponent implements OnInit {
       this.repartirCartas('esclavo'); // El botón Cancelar era "Esclavo"
     } else if (this.modalTipo() === 'racha') {
       // Decidió seguir igual
-      this.rachaVictorias.set(0); // Reiniciamos el contador de racha para el próximo aviso
+      this.rachaVictorias.set(0); // Reiniciamos el contador de racha  
       this.repartirCartas(this.bandoJugador()!);
       this.limpiarMesa();
     } else if (this.modalTipo() === 'fin') {

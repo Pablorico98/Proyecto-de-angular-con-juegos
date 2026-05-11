@@ -1,0 +1,137 @@
+<div class="main-container">
+    <h1 class="titulo-principal">Ranking de Jugadores 🏆</h1>
+
+    @if (cargando()) {
+        <div class="spinner-container">
+            <p>Cargando resultados desde la base de datos...</p>
+        </div>
+    } @else {
+        <div class="tablas-grid">
+            
+            <div class="tabla-card">
+                <div class="tabla-header-acciones">
+                    <h2>🧠 Preguntados</h2>
+                    <button class="btn-orden" (click)="toggleOrden('preguntados')">
+                        {{ ordenInverso().preguntados ? '⬆ Peores' : '⬇ Mejores' }}
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="glass-table">
+                        <thead>
+                            <tr>
+                                <th>Jugador</th>
+                                <th>Puntos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (log of preguntadosDisplay(); track log.id) {
+                                <tr>
+                                    <td>{{ log.nombre_jugador }}</td>
+                                    <td><strong>{{ log.resultado }}</strong> pts</td>
+                                </tr>
+                            } @empty {
+                                <tr><td colspan="2" class="empty-msg">Sin datos.</td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tabla-card">
+                <div class="tabla-header-acciones">
+                    <h2>🃏 Mayor o Menor</h2>
+                    <button class="btn-orden" (click)="toggleOrden('mayorMenor')">
+                        {{ ordenInverso().mayorMenor ? '⬆ Peores' : '⬇ Mejores' }}
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="glass-table">
+                        <thead>
+                            <tr>
+                                <th>Jugador</th>
+                                <th>Aciertos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (log of mayorMenorDisplay(); track log.id) {
+                                <tr>
+                                    <td>{{ log.nombre_jugador }}</td>
+                                    <td><strong>{{ log.resultado.aciertos_totales }}</strong></td>
+                                </tr>
+                            } @empty {
+                                <tr><td colspan="2" class="empty-msg">Sin datos.</td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tabla-card">
+                <div class="tabla-header-acciones">
+                    <h2>🎭 E-Card</h2>
+                    <button class="btn-orden" (click)="toggleOrden('eCard')">
+                        {{ ordenInverso().eCard ? '⬆ Peores' : '⬇ Mejores' }}
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="glass-table">
+                        <thead>
+                            <tr>
+                                <th>Jugador</th>
+                                <th>Puntos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (log of eCardDisplay(); track log.id) {
+                                <tr>
+                                    <td>{{ log.nombre_jugador }}</td>
+                                    <td><strong>{{ log.resultado }}</strong> pts</td>
+                                </tr>
+                            } @empty {
+                                <tr><td colspan="2" class="empty-msg">Sin datos.</td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tabla-card">
+                <div class="tabla-header-acciones">
+                    <h2>🔤 Ahorcado</h2>
+                    <button class="btn-orden" (click)="toggleOrden('ahorcado')">
+                        {{ ordenInverso().ahorcado ? '⬆ Peores' : '⬇ Mejores' }}
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="glass-table">
+                        <thead>
+                            <tr>
+                                <th>Jugador</th>
+                                <th>Estado</th>
+                                <th>Tiempo</th>
+                                <th>Fallos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (log of ahorcadoDisplay(); track log.id) {
+                                <tr>
+                                    <td>{{ log.nombre_jugador }}</td>
+                                    <td>
+                                        <span class="badge" [class.badge-win]="log.resultado.gano" [class.badge-lose]="!log.resultado.gano">
+                                            {{ log.resultado.gano ? 'Ganó' : 'Perdió' }}
+                                        </span>
+                                    </td>
+                                    <td>{{ log.resultado.tiempo_segundos }}s</td>
+                                    <td>{{ log.resultado.intentos_fallidos }}</td>
+                                </tr>
+                            } @empty {
+                                <tr><td colspan="4" class="empty-msg">Sin datos.</td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

@@ -47,6 +47,10 @@ export const routes: Routes = [
   loadComponent: () => import('./juegos/e-card/e-card').then(m => m.ECardComponent),
   canActivate: [authGuard] 
  },
+ { 
+    path: 'resultados', 
+    loadComponent: () => import('./pages/resultados/resultados').then(m => m.Resultados) 
+  },
   { 
     path: '**', 
     redirectTo: '', 
