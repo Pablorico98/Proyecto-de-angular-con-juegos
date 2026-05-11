@@ -1,0 +1,82 @@
+<div class="main-juego">
+  <button routerLink="/" class="btn-volver">
+    <span class="icon">⬅</span> Volver
+  </button>
+
+  <div class="juego-container">
+    
+    <div class="header-juego">
+      <h2>E-Card</h2>
+      <div class="stats">
+        <div class="stat-badge vidas">
+          <span>❤️ Vidas:</span> <strong>{{ vidas() }}</strong>
+        </div>
+        <div class="stat-badge puntos">
+          <span>⭐ Puntos:</span> <strong>{{ puntos() }}</strong>
+        </div>
+        @if (bandoJugador()) {
+          <div class="stat-badge bando">
+            <span>🎭 Bando:</span> <strong class="capitalizado">{{ bandoJugador() }}</strong>
+          </div>
+        }
+      </div>
+    </div>
+
+    @if (bandoJugador()) {
+      <div class="mesa-verde">
+        
+        <div class="mano-cpu">
+          @for (carta of manoCpu(); track $index) {
+            <div class="carta-dorso"></div>
+          }
+        </div>
+
+        <div class="zona-batalla">
+          <div class="slot-batalla cpu">
+            @if (cartaCpu()) {
+              <img [src]="'/' + cartaCpu() + '.png'" alt="CPU" class="carta-revelada">
+            }
+          </div>
+          
+          <div class="vs-indicador">
+            @if (resultadoMano()) {
+              <span class="resultado-texto" [ngClass]="resultadoMano()">
+                {{ resultadoMano() | uppercase }}
+              </span>
+            } @else {
+              <span class="vs">VS</span>
+            }
+          </div>
+
+          <div class="slot-batalla jugador">
+            @if (cartaJugada()) {
+              <img [src]="'/' + cartaJugada() + '.png'" alt="Jugador" class="carta-revelada">
+            }
+          </div>
+        </div>
+
+        <div class="mano-jugador">
+          @for (carta of manoJugador(); track $index) {
+            <button class="carta-btn" 
+                    [disabled]="bloquearMesa()" 
+                    (click)="jugarCarta($index)">
+              <img [src]="'/' + carta + '.png'" [alt]="carta">
+            </button>
+          }
+        </div>
+
+      </div>
+    }
+  </div>
+
+  @if (modalService.mostrarModal()) {
+    <app-modal-aviso 
+        [titulo]="modalTitulo()"
+        [mensaje]="modalMensaje()"
+        [textoConfirmar]="modalBtnConfirmar()"
+        [textoCancelar]="modalBtnCancelar()"
+        (confirmar)="manejarAccionConfirmar()"
+        (cancelar)="manejarAccionCancelar()">
+    </app-modal-aviso>
+  }
+</div>

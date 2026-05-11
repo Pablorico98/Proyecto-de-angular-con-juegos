@@ -1,0 +1,205 @@
+/* --- CONTENEDOR GENERAL --- */
+.main-juego {
+    padding: 20px;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-volver {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #8b949e;
+    border: 1px solid #30363d;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 auto 20px auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-volver:hover {
+    background-color: #21262d;
+    color: #58a6ff;
+    border-color: #58a6ff;
+}
+
+.juego-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+/* --- HEADER Y STATS --- */
+.header-juego h2 {
+    color: #fff;
+    margin: 0 0 15px 0;
+    font-size: 2rem;
+    text-shadow: 0 0 10px #58a6ff;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-badge {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+
+.stat-badge.vidas strong { color: #ff5858; }
+.stat-badge.puntos strong { color: #ffca28; }
+.stat-badge.bando strong { color: #58a6ff; }
+
+.capitalizado {
+    text-transform: capitalize;
+}
+
+/* --- MESA DE JUEGO --- */
+.mesa-verde {
+    background: radial-gradient(circle, #2a4b38 0%, #1a2e22 100%);
+    border-radius: 12px;
+    padding: 30px 20px;
+    border: 2px solid #304e3b;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* --- CARTAS CPU (Boca abajo) --- */
+.mano-cpu {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.carta-dorso {
+    width: 70px;
+    height: 100px;
+    background: repeating-linear-gradient(45deg, #1f1f1f, #1f1f1f 10px, #2a2a2a 10px, #2a2a2a 20px);
+    border: 3px solid #e0e0e0;
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+/* --- ZONA DE BATALLA --- */
+.zona-batalla {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    min-height: 160px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.slot-batalla {
+    width: 100px;
+    height: 140px;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carta-revelada {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 3px solid #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    animation: revelar 0.4s ease-out;
+}
+
+@keyframes revelar {
+    from { transform: scale(0.5) rotateY(90deg); opacity: 0; }
+    to { transform: scale(1) rotateY(0deg); opacity: 1; }
+}
+
+/* --- INDICADOR VS Y RESULTADOS --- */
+.vs-indicador {
+    width: 80px;
+    font-weight: bold;
+}
+
+.vs {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.resultado-texto {
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    animation: zoomIn 0.3s ease-out;
+}
+
+.resultado-texto.victoria { background: #2ea043; color: white; }
+.resultado-texto.derrota { background: #da3633; color: white; }
+.resultado-texto.empate { background: #8b949e; color: white; }
+
+@keyframes zoomIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+/* --- MANO JUGADOR --- */
+.mano-jugador {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.carta-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.carta-btn img {
+    width: 80px;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 3px solid #e0e0e0;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.4);
+}
+
+.carta-btn:hover:not(:disabled) {
+    transform: translateY(-15px) scale(1.05);
+}
+
+.carta-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 500px) {
+    .zona-batalla { flex-direction: column; gap: 15px; }
+    .carta-btn img { width: 60px; height: 85px; }
+    .carta-dorso { width: 50px; height: 75px; }
+}

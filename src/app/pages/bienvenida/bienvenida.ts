@@ -36,10 +36,10 @@ export class Bienvenida {
       link: '/juegos/preguntados'
     },
     {
-      titulo: 'Lógica Backend',
-      subtitulo: 'Creación de APIs',
-      imagen: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=300',
-      link: '#'
+      titulo: 'E-Card',
+      subtitulo: 'Supera a la CPU en este juego de cartas con estrategia y suerte.',
+      imagen: 'emperador.png',
+      link: '/juegos/e-card'
     }
   ];
 
