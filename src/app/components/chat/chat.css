@@ -1,11 +1,8 @@
-/* chat.component.css - ARCHIVO COMPLETO */
-
-/* Contenedor principal del chat */
 .chat-container {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%; /* CLAVE: Toma el alto dinámico que le pasa bienvenida.css */
+    height: 100%;
     margin: 0;
     background: #1e1e2f;
     border-radius: 15px;
@@ -14,7 +11,6 @@
     border: 1px solid #333;
 }
 
-/* Lista de mensajes con scroll y fondo */
 .mensajes-lista {
     flex: 1;
     padding: 20px;
@@ -27,48 +23,62 @@
     background-size: 20px 20px;
 }
 
-/* Estilo base para mensajes de OTROS */
 .mensaje {
     background: #2a2a40;
     color: #e0e0e0;
     padding: 10px 15px;
     border-radius: 12px 12px 12px 0;
-    max-width: 85%;
-    align-self: flex-start; /* Alineado a la izquierda */
+    max-width: 90%;
+    min-width: 150px;
+    align-self: flex-start;
     animation: fadeIn 0.3s ease;
     border-left: 4px solid #007bff;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0 10px;
 }
 
-/* Estilo para TUS mensajes */
 .mensaje.propio {
-    align-self: flex-end; /* Lo mueve a la derecha */
-    background: #007bff; 
+    align-self: flex-end;
+    background: #007bff;
     border-left: none;
-    border-right: 4px solid #00d4ff; 
+    border-right: 4px solid #00d4ff;
     border-radius: 12px 12px 0 12px;
-    text-align: right;
 }
 
 .mensaje strong {
-    display: block;
+    order: 1;
     font-size: 0.85rem;
     color: #00d4ff;
-    margin-bottom: 4px;
+    white-space: nowrap;
+    margin: 0;
 }
 
-/* Color de nombre para tus propios mensajes */
 .mensaje.propio strong {
     color: #e0f2ff;
 }
 
-/* Texto del mensaje */
+.mensaje small {
+    order: 2;
+    font-size: 0.75rem;
+    color: #888;
+    white-space: nowrap;
+    margin: 0 0 0 auto;
+}
+
+.mensaje.propio small {
+    color: #d1e9ff;
+}
+
 .mensaje p {
+    order: 3;
+    width: 100%;
     font-size: 1rem;
     word-wrap: break-word;
     color: white;
-    margin: 0; /* Aseguramos que no tenga margin extra que rompa el globo */
+    margin: 5px 0 0 0;
     text-align: left;
 }
 
@@ -76,19 +86,6 @@
     text-align: right;
 }
 
-.mensaje small {
-    display: block;
-    text-align: right;
-    font-size: 0.7rem;
-    color: #888;
-    margin-top: 5px;
-}
-
-.mensaje.propio small {
-    color: #d1e9ff;
-}
-
-/* Área de entrada de texto */
 .input-area {
     display: flex;
     padding: 15px;
@@ -132,7 +129,6 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Personalización de la barra de scroll */
 .mensajes-lista::-webkit-scrollbar {
     width: 6px;
 }
@@ -140,4 +136,14 @@
 .mensajes-lista::-webkit-scrollbar-thumb {
     background: #444;
     border-radius: 10px;
+}
+
+.input-area input:disabled,
+.input-area button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.input-area button:disabled:hover {
+    background: #007bff;
 }

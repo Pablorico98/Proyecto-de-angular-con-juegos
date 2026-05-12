@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject ,signal} from '@angular/core';
 import { RouterOutlet, RouterLink, Router} from '@angular/router'
 import { Card } from '../../components/card/card';
 import { ModalService } from '../../services/modal';
@@ -15,7 +15,7 @@ import { ModalAviso } from '../../components/modal-aviso/modal-aviso';
 export class Bienvenida {
   public modalService = inject(ModalService);
   private router = inject(Router)
-  
+  bloquearBotonChat = signal(false);
   misTarjetas = [
    {
       titulo: 'Ahorcado',
@@ -49,13 +49,22 @@ export class Bienvenida {
   
  irAlLogin() {
   this.modalService.cerrar();
-    this.modalService.cerrar(); // Cerramos el modal antes de irnos
-    this.router.navigate(['/login'])
+  this.router.navigate(['/login'])
 }
 
 cerrarModal() {
   this.modalService.cerrar();
 }
+
+
+async toggleChat(ruta: string) {
+    if (this.bloquearBotonChat()) return; 
+    this.bloquearBotonChat.set(true); 
+    await this.router.navigate([ruta]); 
+    setTimeout(() => {
+      this.bloquearBotonChat.set(false);
+    }, 500);
+  }
 
 
 

@@ -15,11 +15,10 @@ export class MayorMenorComponent implements OnInit {
   private juegosService = inject(JuegosService);
   private router = inject(Router);
 
-  // Estados del juego con Signals[cite: 1]
+ 
   cartaActual = signal<number>(0);
   proximaCarta = signal<number>(0);
   aciertos = signal<number>(0);
-  rachaActual = signal<number>(0);
   
   mostrarModalJuego = false;
   modalTitulo = '';

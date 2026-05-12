@@ -134,3 +134,10 @@
         justify-content: center;
     }
 }
+
+.btn-acceso-chat:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}

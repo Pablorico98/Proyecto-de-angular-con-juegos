@@ -56,8 +56,12 @@ export class ECardComponent implements OnInit {
   // 1. EL MODAL ARRANCA EL JUEGO
   pedirBandoInicial() {
     this.modalTipo.set('inicio');
-    this.modalTitulo.set('E-Card: Elige tu Bando');
-    this.modalMensaje.set('Emperador: Ganas 1 punto (Más seguro).\nEsclavo: Ganas 3 puntos (Más difícil).');
+    this.modalTitulo.set('E-Card: Elige tu Bando\n' + 'Esclavo o Emperador');
+    this.modalMensaje.set('REGLAS:\n' +
+    'EMPERADOR gana a Ciudadano (+1 pto).\n' +
+    'CIUDADANO gana a Esclavo (+1 pto).\n' +
+    'ESCLAVO gana a Emperador (+3 ptos).\n' +
+    'ESCLAVO pierde contra todo lo demás.');   
     this.modalBtnConfirmar.set('Bando Emperador');
     this.modalBtnCancelar.set('Bando Esclavo');
     this.modalService.abrir();

@@ -8,17 +8,18 @@
           
           <strong>{{ msj.nombre_usuario }}</strong>
         }
+        <small>{{ msj.created_at | date:'dd/MM/yyyy HH:mm' }}</small>
         
         <p>{{ msj.contenido }}</p>
         
         <!-- displayed -->
         
-        <small>{{ msj.created_at | date:'HH:mm' }}</small>
       </div>
     }
   </div>
   <div class="input-area">
-    <input [(ngModel)]="nuevoMensaje" placeholder="Escribí un mensaje..." (keyup.enter)="mandar()">
-    <button (click)="mandar()">Enviar</button>
+    <input [(ngModel)]="nuevoMensaje" placeholder="Escribí un mensaje..." (keyup.enter)="mandar()"[disabled]="enviando()">
+     
+    <button (click)="mandar()" [disabled]="enviando()">Enviar</button>
   </div>
 </div>

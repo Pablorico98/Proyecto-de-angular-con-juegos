@@ -6,12 +6,12 @@
     <!-- BOTÓN DE CHAT INDEPENDIENTE -->
     <div class="seccion-acciones-principales">
         @if (!esChatActivo()) {
-            <button routerLink="chat" class="btn-acceso-chat">
+            <button (click)="toggleChat('/chat')" [disabled]="bloquearBotonChat()" class="btn-acceso-chat">
                 <span class="icon">💬</span> Abrir Chat Global
             </button>
         } 
         @else {
-            <button routerLink="/" class="btn-acceso-chat btn-cerrar-chat">
+            <button (click)="toggleChat('/')" [disabled]="bloquearBotonChat()" class="btn-acceso-chat btn-cerrar-chat">
                 <span class="icon">❌</span> Cerrar Chat
             </button>
         }

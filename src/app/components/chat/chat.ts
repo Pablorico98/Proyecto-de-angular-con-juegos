@@ -18,6 +18,7 @@ export class Chat implements OnInit, OnDestroy {
   nuevoMensaje = '';
   mensajes = signal<any[]>([]);
   usuarioId = '';
+  enviando = signal(false);
 
   async ngOnInit() {
     
@@ -45,9 +46,11 @@ export class Chat implements OnInit, OnDestroy {
   }
 
   async mandar() {
-    if (this.nuevoMensaje.trim()) {
+    if (this.nuevoMensaje.trim() && !this.enviando()) {
+      this.enviando.set(true);
       await this.chatService.enviarMensaje(this.nuevoMensaje);
       this.nuevoMensaje = '';
+      this.enviando.set(false);
     }
   }
 
